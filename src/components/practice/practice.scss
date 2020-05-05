@@ -2,12 +2,23 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
     .links {
+      margin-top: 60px;
       display: flex;
-      width: 75%;
+      // width: 75%;
       justify-content: space-around;
+    }
+    
+    .title{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 8em;
     }
 }

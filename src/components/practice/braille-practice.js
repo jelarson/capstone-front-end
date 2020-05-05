@@ -51,13 +51,10 @@ export default function BraillePractice(props) {
     <div className='page-wrapper'>
       <Navbar />
       <div className='practice-page-content-wrapper'>
-        <div className='title'>
-          Braille Practice
-        </div>
-        <div className='subtitle'>
-          Choose a Letter to Practice
-        </div>
         <BrailleLinks />
+        <div className='title'>
+          Choose a Letter Above to Start Practicing Braille
+        </div>
       </div>
     </div>
   )

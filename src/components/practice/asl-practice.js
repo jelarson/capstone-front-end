@@ -51,8 +51,10 @@ export default function AslPractice(props) {
     <div className='page-wrapper'>
       <Navbar />
       <div className='practice-page-content-wrapper'>
-        ASL Practice
-      <AslLinks />
+        <AslLinks />
+        <div className='title'>
+          Choose a Letter Above to Start Practicing American Sign Language
+        </div>
       </div>
     </div>
   )
