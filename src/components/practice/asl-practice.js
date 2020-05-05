@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
+import AslLinks from './asl-links'
 import './practice.scss'
 
 
@@ -15,8 +16,10 @@ export default function AslPractice(props) {
     console.log('running get')
     axios.get('https://jel-language-flashcard-api.herokuapp.com/asls')
       .then((response) => {
-        debugger
+        // debugger
         setData(response.data)
+        // console.log(response.data)
+        console.log(response.data.sort((a, b) => (a.id < b.id) ? -1 : 1))
 
         console.log('state set')
         setLinkData(response.data.map(item => {
@@ -27,7 +30,7 @@ export default function AslPractice(props) {
         // setStartingData(response.data)
       })
       .catch((error) => {
-        console.log('getProducts error', error)
+        console.log('get links error', error)
       })
   }, [])
 
@@ -49,10 +52,7 @@ export default function AslPractice(props) {
       <Navbar />
       <div className='practice-page-content-wrapper'>
         ASL Practice
-      <div className='links'>
-          {/* <button onClick={() => { generatelinks() }}>click</button> */}
-          {linkData}
-        </div>
+      <AslLinks />
       </div>
     </div>
   )

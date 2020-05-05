@@ -11,6 +11,9 @@ import AslTranslate from './translate/asl-translate'
 import BrailleTranslate from './translate/braille-translate'
 import BrailleMastery from './mastery/braille-mastery'
 import AslMastery from './mastery/asl-mastery'
+import NoMatch from './no-match/no-match'
+import BrailleItem from './letter-item/braille-item'
+import AslItem from './letter-item/asl-item'
 
 export default function App() {
   return (
@@ -28,6 +31,15 @@ export default function App() {
             <Route exact path="/asl-translate" component={AslTranslate} />
             <Route exact path="/asl-mastery" component={AslMastery} />
             <Route exact path="/braille-mastery" component={BrailleMastery} />
+            <Route
+              exact path="/braille/:slug"
+              component={BrailleItem}
+            />
+            <Route
+              exact path="/asl/:slug"
+              component={AslItem}
+            />
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>

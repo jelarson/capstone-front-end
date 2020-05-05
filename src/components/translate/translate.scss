@@ -17,11 +17,16 @@
     width: 60%;
 
     .translate-input {
-      font-size: 115px;
+      font-size: 80px;
       outline: none;
       border: 5px solid black;
       border-radius: 12px;
       width: 110%;
+    }
+
+    .char-count {
+      font-size: 25px;
+      margin-top: 15px;
     }
 
     .input-button {

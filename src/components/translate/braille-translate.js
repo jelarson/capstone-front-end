@@ -13,6 +13,8 @@ export default function BrailleTranslate(props) {
   const [enteredInput, setEnteredInput] = useState('')
   const [chosenInput, setChosenInput] = useState('')
   const [data, setData] = useState('')
+  const [count, setCount] = useState(0)
+  const [maxCount, setMaxCount] = useState(999)
 
   useEffect(() => {
     console.log('running')
@@ -26,6 +28,15 @@ export default function BrailleTranslate(props) {
         console.log('getProducts error', error)
       })
   }, [])
+
+  useEffect(() => {
+    setCount(enteredInput.split(' ').join('').length)
+    if (count === 7) {
+      setMaxCount(count)
+    } else {
+      setMaxCount(999)
+    }
+  }, [enteredInput])
 
   // function translate(string) {
   //   console.log(data)
@@ -72,15 +83,16 @@ export default function BrailleTranslate(props) {
             className='translate-input'
             type='text'
             placeholder='Enter Text'
+            maxLength={maxCount}
             onChange={e => {
               setEnteredInput(e.target.value);
             }}
           />
+          <div className='char-count'>
+            Characters Used: {count} / 8
+        </div>
           <button className='input-button' onClick={(e) => { e.preventDefault(); setChosenInput(enteredInput) }}>Submit</button>
         </form>
-        <div>
-          {enteredInput}
-        </div>
         <div className='output'>
           {translate(chosenInput)}
         </div>
