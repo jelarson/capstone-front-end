@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
 
-export default function BraillePractice(props) {
+
+export default function AslMastery(props) {
   return (
     <div className='page-wrapper'>
       <Navbar />
-      <div className='practice-page-content-wrapper'>
-        Braille Practice
+      <div className='mastery-page-content-wrapper'>
+        ASL Mastery
     </div>
     </div>
   )

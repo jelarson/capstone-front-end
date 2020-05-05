@@ -14,10 +14,16 @@
     background-size: cover;
     font-size: 40px;
     text-align: center;
-    color: white;
+    // color: white;
+    color: none;
+    filter: brightness(50%);
+    // opacity: .6;
 
     &:hover {
-      background-color: cornflowerblue;
+      // opacity: 1;
+      color: black;
+      transition: .3s;
+      filter: brightness(100%);
     }
   }
   
@@ -32,10 +38,19 @@
     background-size: cover;
     font-size: 40px;
     text-align: center;
-    color: white;
-
+    // color: white;
+    color: none;
+    text-decoration: none;
+    background-color: black;
+    filter: brightness(50%);
+    // opacity: .6;
+    
+    
     &:hover {
-      background-color: cornflowerblue;
-  }
+      // opacity: 1;
+      transition: .3s;
+      filter: brightness(100%);
+      color: black;
+    }
 }
 }

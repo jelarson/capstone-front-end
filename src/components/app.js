@@ -7,6 +7,10 @@ import NewAccount from './new-account/new-account'
 import LanguageChoice from './language-choice/language-choice'
 import BraillePractice from './practice/braille-practice'
 import AslPractice from './practice/asl-practice'
+import AslTranslate from './translate/asl-translate'
+import BrailleTranslate from './translate/braille-translate'
+import BrailleMastery from './mastery/braille-mastery'
+import AslMastery from './mastery/asl-mastery'
 
 export default function App() {
   return (
@@ -20,6 +24,10 @@ export default function App() {
             <Route exact path="/" component={LanguageChoice} />
             <Route exact path="/asl" component={AslPractice} />
             <Route exact path="/braille" component={BraillePractice} />
+            <Route exact path="/braille-translate" component={BrailleTranslate} />
+            <Route exact path="/asl-translate" component={AslTranslate} />
+            <Route exact path="/asl-mastery" component={AslMastery} />
+            <Route exact path="/braille-mastery" component={BrailleMastery} />
           </Switch>
         </div>
       </Router>

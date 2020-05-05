@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import './navbar.scss'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleRight,
   faArrowCircleLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import SidebarLink from './SidebarLink';
 
 const Icons = () => {
   return library.add(
-    faCog,
     faArrowCircleRight,
-    faArrowCircleLeft,
-    faEnvelope
+    faArrowCircleLeft
   );
 };
 
@@ -21,8 +22,8 @@ export default function Navbar() {
 
   Icons()
 
-  const [name, setName] = useState('nav-wrapper-closed')
-
+  const [name, setName] = useState('nav-wrapper')
+  const [activeLink, setActiveLink] = useState()
   function nameChange() {
     if (name === 'nav-wrapper-closed') {
       return setName('nav-wrapper')
@@ -31,33 +32,41 @@ export default function Navbar() {
       return setName('nav-wrapper-closed')
     }
   }
-
+  const handleClickThingy = name => {
+    setActiveLink(name)
+  }
   return (
     <div className={name}>
-      <div className='nav-link-wrapper1'>
-        <NavLink exact to='/'><a className='nav-link-wrapper'>Home</a></NavLink>
+      <div className='asl-navbar-links navbar-links'>
+        <div className='navbar-sub-category-title'>
+          <h3>American Sign Language</h3>
+        </div>
+        <div className='navbar-link-wrapper'>
+          <NavLink exact to='/asl' className='link' activeStyle={{ color: "red", fontSize: "24px", fontWeight: "900" }}><div className='nav-div'>Practice</div></NavLink>
+        </div>
+        <div className='navbar-link-wrapper'>
+          <NavLink exact to='/asl-translate' className='link' activeStyle={{ color: "red", fontSize: "24px", fontWeight: "900" }}><div className='nav-div'>Translate</div></NavLink>
+        </div>
+        <div className='navbar-link-wrapper'>
+          {/* <NavLink exact to='/asl-mastery' className='link'><button className='nav-link'>Test Yourself</button></NavLink> */}
+          <NavLink exact to='/asl-mastery' className='link' activeStyle={{ color: "red", fontSize: "24px", fontWeight: "900" }}><div className='nav-div'>Test Yourself</div></NavLink>
+        </div>
       </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/hashtag'><a className='nav-link-wrapper'>Hashtag Generator</a></NavLink>
+
+      <div className='braile-navbar-links navbar-links'>
+        <div className='navbar-sub-category-title'>
+          <h3>Braille</h3>
+        </div>
+        <div className={`navbar-link-wrapper`}>
+          <NavLink exact to='/braille' className='link' activeStyle={{ color: "red", fontSize: "24px", fontWeight: "900" }}><div className='nav-div'>Practice</div></NavLink>
+        </div>
+        <div className='navbar-link-wrapper'>
+          <NavLink exact to='/braille-translate' className='link' activeStyle={{ color: "red", fontSize: "24px", fontWeight: "900" }}><div className='nav-div'>Translate</div></NavLink>
+        </div>
+        <SidebarLink update={handleClickThingy} destination="/braille-mastery" text="Test Yourself" activeLink={activeLink} id={'1'} />
       </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/least-greatest'><a className='nav-link-wrapper'>Least and Greatest</a></NavLink>
-      </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/spongebob'><a className='nav-link-wrapper'>Spongebob Case</a></NavLink>
-      </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/squared'><a className='nav-link-wrapper'>Square Every Digit</a></NavLink>
-      </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/string-increment'><a className='nav-link-wrapper'>Increment Numbers in a String</a></NavLink>
-      </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/string-reverse'><a className='nav-link-wrapper'>Reverse String</a></NavLink>
-      </div>
-      <div className='nav-link-wrapper1'>
-        <NavLink to='/military-time'><a className='nav-link-wrapper'>Military Time Converter</a></NavLink>
-      </div>
+
+
       <div className='drawer-button'>
         {name === 'nav-wrapper' ?
           <button onClick={() => nameChange()} className='drawer-button1'><FontAwesomeIcon icon='arrow-circle-left' /></button>

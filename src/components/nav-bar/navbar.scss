@@ -1,0 +1,126 @@
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 18vw;
+  justify-content: space-around;
+  background-color: grey;
+  position: relative;
+
+  .navbar-links {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;;
+
+    .active {
+      width: 18vw;
+      height: 10vh;
+      background-color: black;
+    }
+
+    .navbar-sub-category-title{
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    
+    .link {
+      text-decoration: none;
+      color: white;
+      // margin-left: 10px;
+      font-size: 20px;
+      height: 10vh;
+      width: 18vw;
+
+      &:hover {
+        background-color: black;
+      }
+
+      .nav-div {
+        width: calc(18vw - 10px);
+        height: 10vh;
+        display: flex;
+        padding-left: 10px;
+        align-items: center;
+        
+        &:hover {
+          background-color: black;
+        }
+      }
+    }
+    
+    // .nav-link {
+    //   width: 15vw;
+    //   height: 10vh;
+    //   background-color: grey;
+    //   color: white;
+    //   text-align: left;
+    //   // padding-left: 10px;
+    //   font-size: 15px;
+    //   border: none;
+    //   cursor: pointer;
+
+    //   &:hover {
+    //     background-color: black;
+    //   }
+    // }
+  } 
+  }
+  
+  .drawer-button {
+    position: absolute;
+    top: 5px;
+    right: -51px;
+    font-size: 35px;
+
+    .drawer-button1 {
+      color: black;
+      font-size: 1em;
+      outline: none;
+      border: none;
+    }
+  
+}
+
+.nav-wrapper-closed {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 0vw;
+  // transform: translateX(30px);
+  justify-content: space-around;
+  background-color: grey;
+  position: relative;
+
+  .navbar-sub-category-title{
+    display: none;
+  }
+  
+
+    .link {
+      display: none;
+      text-decoration: none;
+      color: white;
+      // width: 15vw;
+      }
+    
+  }
+  
+  .drawer-button {
+    position: absolute;
+    top: 5px;
+    right: -51px;
+    font-size: 35px;
+
+    .drawer-button1 {
+      color: black;
+      font-size: 1em;
+      outline: none;
+      border: none;
+    }
+  
+}
+
