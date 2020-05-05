@@ -38,11 +38,14 @@ export default function AslItem(props) {
         <div className='links-wrapper'>
           <AslLinks/>
         </div>
+        <div className='content-wrapper'>
+
           <div className='letter-name'>
           {selectedObj.char}
           </div>
         <div className='letter-image'>
           <img src={selectedObj.imageWithoutChar}/>
+        </div>
         </div>
       </div>
     </div>

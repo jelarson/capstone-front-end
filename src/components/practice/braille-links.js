@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
+import './letter-links.scss'
 
 export default function BrailleLinks(props) {
   
@@ -19,8 +20,9 @@ useEffect(() => {
 
       console.log('state set')
       setLinkData(response.data.map(item => {
-        return <div>
-          <Link to={`/braille/${item.id}`}>{item.char}</Link>
+        return <div className='link-div'>
+          <NavLink to={`/braille/${item.id}`} className='letter-link' activeStyle={{backgroundColor: 'white',
+        color: 'black'}}>{item.char} </NavLink>
         </div>
       }))
       // setStartingData(response.data)

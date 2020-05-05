@@ -3,9 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   .links-wrapper{
+    margin-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -13,15 +14,27 @@
 
     .links{
       display: flex;
-      width: 75%;
+      // width: 75%;
       justify-content: space-around;
     }
 
   }
-      .letter-image {
+  .content-wrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
 
-        img {
-          height: 40vh;
-        }
+    .letter-name{
+      font-size: 15em;
+    }
+
+    .letter-image {
+      
+      img {
+        height: 40vh;
       }
+    }
+  }
 }
