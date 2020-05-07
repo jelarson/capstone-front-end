@@ -24,6 +24,8 @@ export default function Navbar() {
 
   const [name, setName] = useState('nav-wrapper')
   const [activeLink, setActiveLink] = useState()
+
+
   function nameChange() {
     if (name === 'nav-wrapper-closed') {
       return setName('nav-wrapper')

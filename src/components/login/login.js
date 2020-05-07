@@ -11,26 +11,53 @@ export default function Login(props) {
 
   function handleLoginSubmit(event) {
     event.preventDefault();
-    axios.get('https://ejt-meme-maker-api.herokuapp.com/users')
-      .then(response => {
-        let profileArray = response.data
-        profileArray.forEach(p => {
-          if (loginEmail === p.email) {
-            if (loginPassword === p.password) {
-              setLoggedInUser(p)
-              props.history.push('/')
+    axios.get('https://jel-user-capstone-api.herokuapp.com/users')
+    .then(response => {
+      let profileArray = response.data
+      profileArray.forEach(profile => {
+        if (loginEmail === profile.email) {
+          console.log('match!', profile)
+          axios.post('https://jel-user-capstone-api.herokuapp.com/auth',
+          {
+            entered_password: loginPassword,
+            checked_password: profile.password
+          },
+          )
+          .then(response => {
+            console.log(response.data)
+            if (response.data === 'True'){
+              console.log('successful login')
             } else {
-              console.log('failed')
-              setVisibility('initial')
+              console.log('unsuccessful login')
             }
-          } else {
-            console.log('not a match')
-            setVisibility('initial')
-          }
-        })
-
+          })
+        }
       })
+    })
   }
+
+  // function handleLoginSubmit(event) {
+  //   event.preventDefault();
+  //   axios.get('https://ejt-meme-maker-api.herokuapp.com/users')
+  //     .then(response => {
+  //       let profileArray = response.data
+  //       profileArray.forEach(p => {
+  //         if (loginEmail === p.email) {
+  //           if (loginPassword === p.password) {
+  //             setLoggedInUser(p)
+  //             props.history.push('/')
+  //           } else {
+  //             console.log('failed')
+  //             setVisibility('initial')
+  //           }
+  //         } else {
+  //           console.log('not a match')
+  //           setVisibility('initial')
+  //         }
+  //       })
+
+  //     })
+  // }
 
   useEffect(() => {
     setVisibility('hidden')
