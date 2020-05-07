@@ -7,9 +7,7 @@ width: 100vw;
 align-items: center;
 justify-items: center;
 
-  .title{
-    color: white;
-  }
+  
 
   .login-image{
     height: 30vh;
@@ -27,6 +25,10 @@ justify-items: center;
     width: calc(30vw - 8px);
     border: 4px solid black;
     background-color: grey;
+
+    .title{
+      color: white;
+    }
 
     .login-form {
       display: flex;
@@ -55,9 +57,11 @@ justify-items: center;
         background-color: white;
         color: black;
         text-decoration: none;
+        border: none;
         outline: none;
         font-size: 1.3em;
         padding: 3px;
+        cursor: pointer;
         
         &:hover {
           background-color: black;
