@@ -8,13 +8,14 @@ export default function Login(props) {
   const [visibility, setVisibility] = useState('hidden')
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
+  const [profiles, setProfiles] = useState([])
 
   function handleLoginSubmit(event) {
     event.preventDefault();
-    axios.get('https://jel-user-capstone-api.herokuapp.com/users')
-    .then(response => {
-      let profileArray = response.data
-      profileArray.forEach(profile => {
+    // axios.get('https://jel-user-capstone-api.herokuapp.com/users')
+    // .then(response => {
+      // let profileArray = response.data
+      profiles.forEach(profile => {
         if (loginEmail === profile.email) {
           console.log('match!', profile)
           axios.post('https://jel-user-capstone-api.herokuapp.com/auth',
@@ -27,13 +28,17 @@ export default function Login(props) {
             console.log(response.data)
             if (response.data === 'True'){
               console.log('successful login')
+              props.history.push('/')
             } else {
               console.log('unsuccessful login')
+              setVisibility('initial')
             }
           })
+        } else {
+          setVisibility('initial')
         }
       })
-    })
+    // })
   }
 
   // function handleLoginSubmit(event) {
@@ -59,9 +64,16 @@ export default function Login(props) {
   //     })
   // }
 
+  // useEffect(() => {
+  //   setVisibility('hidden')
+  // }, [loginPassword, loginEmail])
+
   useEffect(() => {
-    setVisibility('hidden')
-  }, [loginPassword, loginEmail])
+    axios.get('https://jel-user-capstone-api.herokuapp.com/users')
+    .then(response => {
+      setProfiles(response.data)
+    })
+  }, [])
 
   return (
     <div className='login-container'>
@@ -74,7 +86,7 @@ export default function Login(props) {
 
 
         <div className='title'>
-          <h1>LOGIN TO YOUR ACCOUNT</h1>
+          <h1>LOGIN</h1>
         </div>
 
         <form className='login-form' onSubmit={handleLoginSubmit}>
@@ -88,7 +100,7 @@ export default function Login(props) {
               name="email"
               placeholder="Your email"
               value={loginEmail}
-              onChange={({ target }) => { setLoginEmail(target.value) }}
+              onChange={({ target }) => { setLoginEmail(target.value), setVisibility('hidden') }}
             />
           </div>
           <div className='form-item'>
@@ -101,7 +113,7 @@ export default function Login(props) {
               name="password"
               placeholder="Your password"
               value={loginPassword}
-              onChange={({ target }) => { setLoginPassword(target.value) }}
+              onChange={({ target }) => { setLoginPassword(target.value), setVisibility('hidden') }}
             />
           </div>
 
@@ -111,7 +123,7 @@ export default function Login(props) {
           <div className='incorrect-message' style={{
             visibility: `${visibility}`
           }}>
-            <h4>USERNAME OR PASSWORD IS INCORRECT</h4>
+            <h4>Email OR PASSWORD IS INCORRECT</h4>
           </div>
           <div>
             <hr />

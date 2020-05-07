@@ -18,19 +18,25 @@ export default function NewAccount(props) {
 
       axios
         .post(
-          'https://ejt-meme-maker-api.herokuapp.com/user',
+          'https://jel-user-capstone-api.herokuapp.com/user',
           {
             email: email,
             name: name,
             password: password,
-            role: 'user'
+            loggedIn: 'no',
+            testOneHighScore: '0',
+            testOnePassed: 'no',
+            testTwoHighScore: '0',
+            testTwoPassed: 'no',
+            testThreeHighScore: '0',
+            testThreePassed: 'no'
           },
         )
         .then(response => {
           console.log('Account Created')
         })
         .catch(error => {
-          console.log('error')
+          console.log('error', error)
 
         });
       props.history.push('/login')
