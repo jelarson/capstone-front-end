@@ -123,10 +123,10 @@ export default function Login(props) {
           <div className='incorrect-message' style={{
             visibility: `${visibility}`
           }}>
-            <h4>Email OR PASSWORD IS INCORRECT</h4>
+            <h4>EMAIL OR PASSWORD IS INCORRECT</h4>
           </div>
-          <div>
-            <hr />
+          <div className='lower-button-container'>
+            <hr className='break'/>
             <Link className='new-account-button-link' to='/new-account'
             >
               <div className='new-account-button'>
