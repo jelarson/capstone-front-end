@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
+// import { UserContext } from '../context/context'
+
+
 import './login.scss'
 
 export default function Login(props) {
@@ -9,6 +12,9 @@ export default function Login(props) {
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   const [profiles, setProfiles] = useState([])
+
+  // const { setLoggedInUser } = useContext(UserContext)
+
 
   function handleLoginSubmit(event) {
     event.preventDefault();
@@ -28,6 +34,7 @@ export default function Login(props) {
             console.log(response.data)
             if (response.data === 'True'){
               console.log('successful login')
+              // setLoggedInUser(profile)
               props.history.push('/')
             } else {
               console.log('unsuccessful login')

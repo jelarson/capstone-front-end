@@ -15,7 +15,6 @@ export default function NewAccount(props) {
     if (name === '' || email === '' || password === '') {
       setVisibleStyle('initial')
     } else {
-
       axios
         .post(
           'https://jel-user-capstone-api.herokuapp.com/user',
