@@ -48,7 +48,7 @@ export default function BrailleQuizOne(props) {
           <img src={currentQuestion.answerUrl}/>
         </div>
         <div className='question'>
-          What letter or number is represented by the above character 
+          What letter or number is represented by the above character?
         </div>
         <div className='answer-wrapper'>
           <div className='answer-top-row answer-row'>

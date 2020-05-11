@@ -22,6 +22,7 @@ import BrailleQuizTwo from './mastery/braille-quiz-two'
 import BrailleQuizThree from './mastery/braille-quiz-three'
 import CorrectAnswer from './mastery/correct-answer'
 import WrongAnswer from './mastery/wrong-answer'
+import Results from './mastery/results'
 
 export default function App() {
   return (
@@ -121,6 +122,14 @@ export default function App() {
             <Route
               exact path='/wrong/braille/q3/:slug'
               component={WrongAnswer}
+              />
+            <Route
+              exact path='/results/braille/:slug'
+              component={Results}
+              />
+            <Route
+              exact path='/results/asl/:slug'
+              component={Results}
               />
             <Route component={NoMatch} />
           </Switch>

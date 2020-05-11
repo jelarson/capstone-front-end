@@ -9,6 +9,7 @@ export default function CorrectAnswer(props) {
   const data = props.location.state
 
   console.log('correct', data.correct + 1)
+  console.log('selected', data.selectedAnswer)
 
   const correct = data.correct
 
