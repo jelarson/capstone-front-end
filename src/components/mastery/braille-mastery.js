@@ -114,15 +114,15 @@ export default function BrailleMastery(props) {
         <div className='test-wrapper'>
           <div className='test-one test'>
             test 1 placeholder
-            <Link to={`/braille-mastery/q1/${quizOneSlug}`} count={quizOneCount} className='test-one-link link'>Begin Test</Link>
+            <Link to={{pathname:`/braille-mastery/q1/${quizOneSlug}`, state: {correct: 0}}} count={quizOneCount} className='test-one-link link'>Begin Test</Link>
           </div>
           <div className='test-two test'>
             test 2 placeholder
-            <Link to={`/braille-mastery/q2/${quizTwoSlug}`} count={quizTwoCount} className='test-two-link link'>Begin Test</Link>
+            <Link to={{pathname:`/braille-mastery/q2/${quizTwoSlug}`, state: {correct: 0}}} count={quizTwoCount} className='test-two-link link'>Begin Test</Link>
           </div>
           <div className='test-three test'>
             test 3 placeholder
-            <Link to={`/braille-mastery/q3/${quizThreeSlug}`} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
+            <Link to={{pathname:`/braille-mastery/q3/${quizThreeSlug}`, state: {correct: 0}}} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
           </div>
         </div>
     </div>

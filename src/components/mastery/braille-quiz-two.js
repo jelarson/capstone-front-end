@@ -14,6 +14,8 @@ export default function BrailleQuizTwo(props) {
   const [activeButton3, setActiveButton3] = useState()
   const [activeButton4, setActiveButton4] = useState()
   const slug = props.match.params.slug
+  const correct = props.location.state.correct
+
 
   useEffect(() => {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq2/${slug}`)
@@ -61,7 +63,7 @@ export default function BrailleQuizTwo(props) {
           </div>
         </div>
         <div className='answer-submit-button-wrapper'>
-          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, quiz: 'Braille Quiz Two', quizpath: 'brailleq2'}}} className='answer-submit-button'>Submit Answer</Link>
+          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, correct: correct, quiz: 'Braille Quiz Two', quizpath: 'brailleq2', quizLen: '18'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
     </div>

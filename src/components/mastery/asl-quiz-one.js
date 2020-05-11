@@ -15,6 +15,10 @@ export default function AslQuizOne(props) {
   const [activeButton4, setActiveButton4] = useState()
   const slug = props.match.params.slug
 
+  const correct = props.location.state.correct
+
+  console.log('correct', correct)
+
   useEffect(() => {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq1/${slug}`)
     .then(response => {
@@ -61,7 +65,7 @@ export default function AslQuizOne(props) {
           </div>
         </div>
         <div className='answer-submit-button-wrapper'>
-          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, quiz: 'ASL Quiz One', quizpath: 'aslq1'}}} className='answer-submit-button'>Submit Answer</Link>
+          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, correct: correct, quiz: 'ASL Quiz One', quizpath: 'aslq1', quizLen: '10'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
     </div>
