@@ -3,21 +3,68 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
+import AslQuizOne from '../mastery/asl-quiz-one'
+import AslQuizTwo from '../mastery/asl-quiz-two'
+import AslQuizThree from '../mastery/asl-quiz-three'
 import './mastery.scss'
-// import { UserContext } from '../../bootstrap'
 
 
 
 export default function AslMastery(props) {
   const [user, setUser] = useState({})
+  const [progress, setProgress] = useState(Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore))
+  const [quizOneSlug, setQuizOneSlug] = useState()
+  const [quizTwoSlug, setQuizTwoSlug] = useState()
+  const [quizThreeSlug, setQuizThreeSlug] = useState()
+  const [quizOneCount, setQuizOneCount] = useState(0)
+  const [quizTwoCount, setQuizTwoCount] = useState(0)
+  const [quizThreeCount, setQuizThreeCount] = useState(0)
+
+  const styles = {
+    backgroundColor: 'green',
+    height: '100%',
+    width: `${Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)} %`
+  }
+
+  console.log(String(Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)))
+
+  // useEffect(() => {
+  //   if(progress < 100) {
+  //     let interval = setInterval(() => setProgress(progress + 0.1), 5)
+  //     return () => clearInterval(interval)
+  //   }
+  // }, [progress])
 
   useEffect(() => {
-    axios.get('https://jel-user-capstone-api.herokuapp.com/user/17')
+    axios.get('https://jel-user-capstone-api.herokuapp.com/user/4')
     .then(response => {
-      console.log(response.data)
+      console.log('user', response.data)
       setUser(response.data)
     })
+    axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq1s')
+    .then(response => {
+      console.log('quiz one', response.data)
+      console.log('quiz one', response.data[0].questionNum)
+      setQuizOneSlug(response.data[quizOneCount].questionNum)
+    })
+    .catch(err => console.log(err, 'err'))
+    axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq2s')
+    .then(response => {
+      console.log('quiz two', response.data)
+      console.log('quiz two', response.data[0].questionNum)
+      setQuizTwoSlug(response.data[quizTwoCount].questionNum)
+    })
+    .catch(err => console.log(err, 'err'))
+    axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq3s')
+    .then(response => {
+      console.log('quiz three', response.data)
+      console.log('quiz three', response.data[0].questionNum)
+      setQuizThreeSlug(response.data[quizThreeCount].questionNum)
+    })
+    .catch(err => console.log(err, 'err'))
   }, [])
+
+  // console.log(progress)
 
   return (
     <div className='page-wrapper'>
@@ -50,10 +97,13 @@ export default function AslMastery(props) {
           <div className='progress-bar-content-wrapper'>
             <div className="progress-bar-wrapper">
               <div className='progress-bar'>
-                progress bar place holder
+                <div style={styles} >
+                  <span>{Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)}</span>
+                </div>
+                {/* progress bar place holder */}
               </div>
               <div className='percent-score'>
-                ph%
+                {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 51 * 100)}%
               </div>
             </div>
             <div className='overall-score'>
@@ -64,15 +114,15 @@ export default function AslMastery(props) {
         <div className='test-wrapper'>
           <div className='test-one test'>
             test 1 placeholder
-            <Link exact to='/asl' className='test-one-link link'>Begin Test</Link>
+            <Link to={`/asl-mastery/q1/${quizOneSlug}`} count={quizOneCount} className='test-one-link link'>Begin Test</Link>
           </div>
           <div className='test-two test'>
             test 2 placeholder
-            <Link exact to='/asl' className='test-two-link link'>Begin Test</Link>
+            <Link to={`/asl-mastery/q2/${quizTwoSlug}`} count={quizTwoCount} className='test-two-link link'>Begin Test</Link>
           </div>
           <div className='test-three test'>
             test 3 placeholder
-            <Link exact to='/asl' className='test-three-link link'>Begin Test</Link>
+            <Link to={`/asl-mastery/q3/${quizThreeSlug}`} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
           </div>
         </div>
     </div>
