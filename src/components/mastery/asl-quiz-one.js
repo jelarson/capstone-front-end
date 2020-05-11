@@ -7,6 +7,7 @@ import './quiz-styles.scss'
 export default function AslQuizOne(props) {
   const [currentQuestion, setCurrentQuestion] = useState({})
   const [selectedAnswer, setSelectedAnswer] = useState('')
+  const [selectedAnswerUrl, setSelectedAnswerUrl] = useState('')
   const [path, setPath] = useState(`/asl-mastery/q1/${slug}`)
   const [activeButton1, setActiveButton1] = useState()
   const [activeButton2, setActiveButton2] = useState()
@@ -49,18 +50,18 @@ export default function AslQuizOne(props) {
         </div>
         <div className='answer-wrapper'>
           <div className='answer-top-row answer-row'>
-          <button className={`answer-button ${activeButton1}`} onClick={() => {setSelectedAnswer(currentQuestion.optionOneName); setActiveButton1('active-button1'); setActiveButton2('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionOneName}</button>
+          <button className={`answer-button ${activeButton1}`} onClick={() => {setSelectedAnswer(currentQuestion.optionOneName); setSelectedAnswerUrl(currentQuestion.optionOneUrl); setActiveButton1('active-button1'); setActiveButton2('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionOneName}</button>
           {/* <button className={`answer-button ${activeButton1}`} onClick={() => setSelectedAnswer(currentQuestion.optionOneName)}>{currentQuestion.optionOneName}</button> */}
           {/* <button className={`answer-button ${activeButton1}`} onClick={() => setActiveButton1('active-button1')} onClick={() => setSelectedAnswer(currentQuestion.optionOneName)}>{currentQuestion.optionOneName}</button> */}
-          <button className={`answer-button ${activeButton2}`} onClick={() => {setSelectedAnswer(currentQuestion.optionTwoName); setActiveButton2('active-button2'); setActiveButton1('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionTwoName}</button>
+          <button className={`answer-button ${activeButton2}`} onClick={() => {setSelectedAnswer(currentQuestion.optionTwoName); setSelectedAnswerUrl(currentQuestion.optionTwoUrl); setActiveButton2('active-button2'); setActiveButton1('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionTwoName}</button>
           </div>
           <div className='answer-bottom-row answer-row'>
-          <button className={`answer-button ${activeButton3}`} onClick={() => {setSelectedAnswer(currentQuestion.optionTwoName); setActiveButton3('active-button3'); setActiveButton1('null'); setActiveButton2('null'); setActiveButton4('null')}}>{currentQuestion.optionThreeName}</button>
-          <button className={`answer-button ${activeButton4}`} onClick={() => {setSelectedAnswer(currentQuestion.optionTwoName); setActiveButton4('active-button4'); setActiveButton1('null'); setActiveButton2('null'); setActiveButton3('null')}}>{currentQuestion.optionFourName}</button>
+          <button className={`answer-button ${activeButton3}`} onClick={() => {setSelectedAnswer(currentQuestion.optionThreeName); setSelectedAnswerUrl(currentQuestion.optionThreeUrl); setActiveButton3('active-button3'); setActiveButton1('null'); setActiveButton2('null'); setActiveButton4('null')}}>{currentQuestion.optionThreeName}</button>
+          <button className={`answer-button ${activeButton4}`} onClick={() => {setSelectedAnswer(currentQuestion.optionFourName); setSelectedAnswerUrl(currentQuestion.optionFourUrl); setActiveButton4('active-button4'); setActiveButton1('null'); setActiveButton2('null'); setActiveButton3('null')}}>{currentQuestion.optionFourName}</button>
           </div>
         </div>
         <div className='answer-submit-button-wrapper'>
-          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, currentQuestion: currentQuestion, quiz: 'ASL Quiz One', quizpath: 'aslq1'}}} className='answer-submit-button'>Submit Answer</Link>
+          <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, quiz: 'ASL Quiz One', quizpath: 'aslq1'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
     </div>
