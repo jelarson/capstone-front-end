@@ -5,6 +5,7 @@ import './wrong.scss'
 
 
 export default function WrongAnswer(props) {
+  const [path, setPath] = useState('')
 
  
   const data = props.location.state
@@ -53,7 +54,7 @@ export default function WrongAnswer(props) {
           Wrong!
         </div>
         <div className='next-question-button-wrapper'>
-          <Link to='/' className='next-question-button'>Next Question</Link>
+          <Link to={path} className='next-question-button'>Next Question</Link>
         </div>
     </div>
   )
