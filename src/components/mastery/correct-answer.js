@@ -9,7 +9,7 @@ export default function CorrectAnswer(props) {
   const data = props.location.state
 
   return(
-    <div className='page-wrapper'>
+    <div className='page-wrapper-quiz'>
       <div className='top-bar-wrapper'>
       <div className='title'>
         {data.quiz}

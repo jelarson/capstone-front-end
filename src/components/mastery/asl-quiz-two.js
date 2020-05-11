@@ -32,7 +32,7 @@ export default function AslQuizTwo(props) {
   }, [selectedAnswer])
 
   return(
-    <div className='page-wrapper'>
+    <div className='page-wrapper-quiz'>
       <div className='top-bar-wrapper'>
       <div className='title'>
         ASL Quiz Two

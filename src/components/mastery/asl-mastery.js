@@ -3,9 +3,9 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
-import AslQuizOne from '../mastery/asl-quiz-one'
-import AslQuizTwo from '../mastery/asl-quiz-two'
-import AslQuizThree from '../mastery/asl-quiz-three'
+// import AslQuizOne from '../mastery/asl-quiz-one'
+// import AslQuizTwo from '../mastery/asl-quiz-two'
+// import AslQuizThree from '../mastery/asl-quiz-three'
 import './mastery.scss'
 
 
