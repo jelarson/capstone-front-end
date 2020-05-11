@@ -7,9 +7,26 @@ import './wrong.scss'
 export default function WrongAnswer(props) {
   const [path, setPath] = useState('')
 
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    if (data.quizpath === 'aslq1') {
+      setPath(`asl-mastery/q1/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'aslq2') {
+      setPath(`asl-mastery/q2/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'aslq3') {
+      setPath(`asl-mastery/q3/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq1') {
+      setPath(`braille-mastery/q1/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq2') {
+      setPath(`braille-mastery/q2/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq3') {
+      setPath(`braille-mastery/q3/${data.questionNum + 1}`)
+    }
+  })
  
   const data = props.location.state
 

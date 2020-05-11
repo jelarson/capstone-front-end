@@ -5,6 +5,28 @@ import { Link } from "react-router-dom";
 import './correct.scss'
 
 export default function CorrectAnswer(props) {
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    if (data.quizpath === 'aslq1') {
+      setPath(`asl-mastery/q1/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'aslq2') {
+      setPath(`asl-mastery/q2/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'aslq3') {
+      setPath(`asl-mastery/q3/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq1') {
+      setPath(`braille-mastery/q1/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq2') {
+      setPath(`braille-mastery/q2/${data.questionNum + 1}`)
+    }
+    if (data.quizpath === 'brailleq3') {
+      setPath(`braille-mastery/q3/${data.questionNum + 1}`)
+    }
+  })
 
   const data = props.location.state
 
@@ -30,7 +52,7 @@ export default function CorrectAnswer(props) {
           Correct!
         </div>
         <div className='next-question-button-wrapper'>
-          <Link to='/' className='next-question-button'>Next Question</Link>
+          <Link to={path} className='next-question-button'>Next Question</Link>
         </div>
     </div>
   )
