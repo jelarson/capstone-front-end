@@ -6,15 +6,16 @@ export const UserProvider = ({ children }) => {
   const [loggedInUser, setState] = useState({
     name: "hello from context",
     testOneHighScore: "0",
-    testOnePassed: "no",
+    testOnePassed: "0",
     testThreeHighScore: "0",
-    testThreePassed: "no",
+    testThreePassed: "0",
     testTwoHighScore: "0",
-    testTwoPassed: "no",
+    testTwoPassed: "0",
   });
   const setLoggedInUser = (user) => {
     setState({
       name: user.name,
+      id: user.id,
       testOneHighScore: user.testOneHighScore,
       testOnePassed: user.testOnePassed,
       testThreeHighScore: user.testThreeHighScore,

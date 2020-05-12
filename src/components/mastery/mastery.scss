@@ -4,10 +4,12 @@
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
+  position: relative;
 
   .page-title {
     font-size: 3em;
     margin-top: 60px;
+    text-align: center;
   }
 
   .profile-bar {
@@ -122,6 +124,11 @@
       background-color: grey;
       color: white;
       font-size: 1.4em;
+      text-align: center;
+
+      .test-title {
+        font-size: 1.6em;
+      }
 
       .link {
         text-decoration: none;
@@ -136,5 +143,20 @@
         }
       }
     }
+  }
+}
+
+.logout-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-decoration: none;
+  padding: 10px;
+  background-color: grey;
+  color: white;
+  font-size: 2em;
+
+  &:hover {
+    background-color: black;
   }
 }

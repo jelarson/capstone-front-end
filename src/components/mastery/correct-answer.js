@@ -43,14 +43,14 @@ export default function CorrectAnswer(props) {
       }
     }
     if (data.quizpath === 'brailleq2') {
-      if (data.currentQuestion.questionNum === '10') {
+      if (data.currentQuestion.questionNum === '18') {
         setPath('/results/braille/q2')
       } else {
         setPath(`/braille-mastery/q2/${Number(data.currentQuestion.questionNum) + 1}`)
       }
     }
     if (data.quizpath === 'brailleq3') {
-      if (data.currentQuestion.questionNum === '10') {
+      if (data.currentQuestion.questionNum === '36') {
         setPath('/results/braille/q3')
       } else {
         setPath(`/braille-mastery/q3/${Number(data.currentQuestion.questionNum) + 1}`)

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Navbar from '../nav-bar/nav-bar'
 
 import './mastery.scss'
-
+import {UserContext} from '../context/context'
 
 
 export default function BrailleMastery(props) {
@@ -18,6 +18,10 @@ export default function BrailleMastery(props) {
   const [quizOneCount, setQuizOneCount] = useState(0)
   const [quizTwoCount, setQuizTwoCount] = useState(0)
   const [quizThreeCount, setQuizThreeCount] = useState(0)
+
+  const { loggedInUser } = useContext(UserContext)
+
+  console.log('logged in user', loggedInUser)
 
   const styles = {
     backgroundColor: 'green',
@@ -37,11 +41,12 @@ export default function BrailleMastery(props) {
   }, [quizOneSlug, width])
 
   useEffect(() => {
-    axios.get('https://jel-user-capstone-api.herokuapp.com/user/4')
+    axios.get(`https://jel-user-capstone-api.herokuapp.com/user/${loggedInUser.id}`)
     .then(response => {
       console.log('user', response.data)
       setUser(response.data)
     })
+    // setUser(loggedInUser)
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/brailleq1s')
     .then(response => {
       console.log('quiz one', response.data)
@@ -67,9 +72,12 @@ export default function BrailleMastery(props) {
 
   // console.log(progress)
 
+  // const testVar = true
+
   return (
     <div className='page-wrapper'>
       <Navbar />
+    {/* {testVar ? 'hi' : 'goodbye'} */}
       <div className='mastery-page-content-wrapper'>
         <div className='page-title'>
           Welcome {user.name}! Ready to master Braille?
@@ -117,18 +125,27 @@ export default function BrailleMastery(props) {
         </div>
         <div className='test-wrapper'>
           <div className='test-one test'>
-            test 1 placeholder
+          <div className='test-title'>
+          Begginer Test<br/>Difficulty: Easy
+            </div>
             <Link to={{pathname:`/braille-mastery/q1/${quizOneSlug}`, state: {correct: 0}}} count={quizOneCount} className='test-one-link link'>Begin Test</Link>
           </div>
           <div className='test-two test'>
-            test 2 placeholder
+          <div className='test-title'>
+          Intermediate Test<br/>Difficulty: Hard
+            </div>
             <Link to={{pathname:`/braille-mastery/q2/${quizTwoSlug}`, state: {correct: 0}}} count={quizTwoCount} className='test-two-link link'>Begin Test</Link>
           </div>
           <div className='test-three test'>
-            test 3 placeholder
+            <div className='test-title'>
+          Expert Test<br/>Difficulty: Insane
+            </div>
             <Link to={{pathname:`/braille-mastery/q3/${quizThreeSlug}`, state: {correct: 0}}} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
           </div>
         </div>
+    </div>
+        <div>
+      <Link to='/login' className='logout-link'>Logout</Link>
     </div>
     {/* <button onClick={console.log('logged in user is: ', loggedInUser.name)}>button</button> */}
     </div>

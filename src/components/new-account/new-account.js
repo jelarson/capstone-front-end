@@ -24,11 +24,11 @@ export default function NewAccount(props) {
             password: password,
             loggedIn: 'no',
             testOneHighScore: '0',
-            testOnePassed: 'no',
+            testOnePassed: '0',
             testTwoHighScore: '0',
-            testTwoPassed: 'no',
+            testTwoPassed: '0',
             testThreeHighScore: '0',
-            testThreePassed: 'no'
+            testThreePassed: '0'
           },
         )
         .then(response => {
