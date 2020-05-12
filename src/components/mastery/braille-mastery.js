@@ -3,15 +3,14 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
-// import AslQuizOne from '../mastery/asl-quiz-one'
-// import AslQuizTwo from '../mastery/asl-quiz-two'
-// import AslQuizThree from '../mastery/asl-quiz-three'
+
 import './mastery.scss'
 
 
 
 export default function BrailleMastery(props) {
   const [user, setUser] = useState({})
+  const [width, setWidth] = useState(0)
   const [progress, setProgress] = useState(Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore))
   const [quizOneSlug, setQuizOneSlug] = useState()
   const [quizTwoSlug, setQuizTwoSlug] = useState()
@@ -23,17 +22,19 @@ export default function BrailleMastery(props) {
   const styles = {
     backgroundColor: 'green',
     height: '100%',
-    width: `${Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)} %`
+    width: width + '%'
   }
 
+  console.log('progress', user.testOneHighScore)
   console.log(String(Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)))
 
-  // useEffect(() => {
-  //   if(progress < 100) {
-  //     let interval = setInterval(() => setProgress(progress + 0.1), 5)
-  //     return () => clearInterval(interval)
-  //   }
-  // }, [progress])
+  useEffect(() => {
+    if(width < Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 51 * 100)) {
+      console.log('useeffect')
+      let interval = setInterval(() => setWidth(width + .5), 5)
+      return () => clearInterval(interval)
+    }
+  }, [quizOneSlug, width])
 
   useEffect(() => {
     axios.get('https://jel-user-capstone-api.herokuapp.com/user/4')
@@ -95,19 +96,22 @@ export default function BrailleMastery(props) {
             </div>
           </div>
           <div className='progress-bar-content-wrapper'>
+            <div className='progress-title'>
+              Overall Progress
+            </div>
             <div className="progress-bar-wrapper">
               <div className='progress-bar'>
-                <div style={styles} >
-                  <span>{Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)}</span>
+                <div style={styles} className='loading-bar'>
+                  <span className='progress-percent'>{width.toFixed(0)}%</span>
                 </div>
                 {/* progress bar place holder */}
               </div>
-              <div className='percent-score'>
+              {/* <div className='percent-score'>
                 {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 51 * 100)}%
-              </div>
+              </div> */}
             </div>
             <div className='overall-score'>
-              {Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)}/51
+              {Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)}/51 Questions Completed
             </div>
           </div>
         </div>
