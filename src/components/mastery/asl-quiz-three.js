@@ -10,6 +10,7 @@ export default function AslQuizThree(props) {
   const [selectedAnswerUrl, setSelectedAnswerUrl] = useState('')
   const [path, setPath] = useState(`/wrong/asl/q3/${slug}`)
   const [enteredAnswer, setEnteredAnswer] = useState()
+  const [count, setCount] = useState(0)
   const slug = props.match.params.slug
 
   const correct = props.location.state.correct
@@ -23,7 +24,7 @@ export default function AslQuizThree(props) {
       setCurrentQuestion(response.data)
     })
   }, [])
-
+  
   useEffect(() => {
     axios.get(`https://jel-language-flashcard-api.herokuapp.com/asls`)
     .then(response => {
@@ -39,16 +40,33 @@ export default function AslQuizThree(props) {
       })
     })
     .catch(err => console.log('error', err))
+    // console.log('selected', selectedAnswer)
+    // console.log('answer', currentQuestion.answerName)
+    // if (selectedAnswer === currentQuestion.answerName) {
+    //   setPath(`/correct/asl/q3/${slug}`)
+    // } 
+    // if (selectedAnswerUrl === '') {
+    //   setPath(`/wrong/asl/q3/${slug}`)
+    // }
+    // else {
+    //   setPath(`/wrong/asl/q3/${slug}`)
+    // }
+  }, [enteredAnswer])
+
+  useEffect(() => {
+    console.log('selected', selectedAnswer)
+    console.log('answer', currentQuestion.answerName)
+    // debugger
+    if (selectedAnswer === '') {
+      setPath(`/wrong/asl/q3/${slug}`)
+    }
     if (selectedAnswer === currentQuestion.answerName) {
       setPath(`/correct/asl/q3/${slug}`)
     } 
-    if (selectedAnswerUrl === '') {
-      setPath(`/wrong/asl/q3/${slug}`)
-    }
     else {
       setPath(`/wrong/asl/q3/${slug}`)
     }
-  }, [enteredAnswer])
+  }, [selectedAnswer])
 
   return(
     <div className='page-wrapper-quiz'>
@@ -68,12 +86,16 @@ export default function AslQuizThree(props) {
           What letter or number is represented by the above character?
         </div>
         <div className='answer-wrapper'>
-          <form>
+          <form className='quiz-form'>
+            <div className='input-title'>
+              Enter Response: 
+            </div>
             <input
+            className='quiz-input'
             maxLength={1}
             value={enteredAnswer}
             onChange={e => {
-              setEnteredAnswer(e.target.value);
+              setEnteredAnswer(e.target.value); setCount(count + 1); console.log(count)
             }}
             />
           </form>

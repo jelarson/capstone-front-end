@@ -10,6 +10,7 @@ export default function BrailleQuizThree(props) {
   const [selectedAnswerUrl, setSelectedAnswerUrl] = useState('')
   const [path, setPath] = useState(`/wrong/braille/q3/${slug}`)
   const [enteredAnswer, setEnteredAnswer] = useState()
+  const [count, setCount] = useState(0)
   const slug = props.match.params.slug
 
   const correct = props.location.state.correct
@@ -23,7 +24,7 @@ export default function BrailleQuizThree(props) {
       setCurrentQuestion(response.data)
     })
   }, [])
-
+  
   useEffect(() => {
     axios.get(`https://jel-language-flashcard-api.herokuapp.com/brailles`)
     .then(response => {
@@ -39,16 +40,22 @@ export default function BrailleQuizThree(props) {
       })
     })
     .catch(err => console.log('error', err))
+  }, [enteredAnswer])
+
+  useEffect(() => {
+    console.log('selected', selectedAnswer)
+    console.log('answer', currentQuestion.answerName)
+    // debugger
+    if (selectedAnswer === '') {
+      setPath(`/wrong/braille/q3/${slug}`)
+    }
     if (selectedAnswer === currentQuestion.answerName) {
       setPath(`/correct/braille/q3/${slug}`)
     } 
-    if (selectedAnswerUrl === '') {
-      setPath(`/wrong/braille/q3/${slug}`)
-    }
     else {
       setPath(`/wrong/braille/q3/${slug}`)
     }
-  }, [enteredAnswer])
+  }, [selectedAnswer])
 
   return(
     <div className='page-wrapper-quiz'>
@@ -68,12 +75,16 @@ export default function BrailleQuizThree(props) {
           What letter or number is represented by the above character?
         </div>
         <div className='answer-wrapper'>
-          <form>
+          <form className='quiz-form'>
+            <div className='input-title'>
+              Enter Response: 
+            </div>
             <input
+            className='quiz-input'
             maxLength={1}
             value={enteredAnswer}
             onChange={e => {
-              setEnteredAnswer(e.target.value);
+              setEnteredAnswer(e.target.value); setCount(count + 1); console.log(count)
             }}
             />
           </form>

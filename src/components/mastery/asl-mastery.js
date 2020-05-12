@@ -35,7 +35,7 @@ export default function AslMastery(props) {
   console.log(String(Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)))
 
   useEffect(() => {
-    if(width < Math.round((Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)) / 51 * 100)) {
+    if(width < Math.round((Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)) / 64 * 100)) {
       console.log('useeffect')
       let interval = setInterval(() => setWidth(width + .5), 5)
       return () => clearInterval(interval)
@@ -117,11 +117,11 @@ export default function AslMastery(props) {
                 {/* progress bar place holder */}
               </div>
               {/* <div className='percent-score'>
-                {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 51 * 100)}%
+                {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 64 * 100)}%
               </div> */}
             </div>
             <div className='overall-score'>
-              {Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)}/51 Questions Completed
+              {Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)}/64 Questions Completed
             </div>
           </div>
         </div>
