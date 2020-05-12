@@ -20,22 +20,46 @@ export default function WrongAnswer(props) {
 
   useEffect(() => {
     if (data.quizpath === 'aslq1') {
-      setPath(`/asl-mastery/q1/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '10') {
+        setPath('/results/asl/q1')
+      } else {
+        setPath(`/asl-mastery/q1/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
     if (data.quizpath === 'aslq2') {
-      setPath(`/asl-mastery/q2/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '18') {
+        setPath('/results/asl/q2')
+      } else {
+        setPath(`/asl-mastery/q2/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
     if (data.quizpath === 'aslq3') {
-      setPath(`/asl-mastery/q3/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '36') {
+        setPath('/results/asl/q3')
+      } else {
+        setPath(`/asl-mastery/q3/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
     if (data.quizpath === 'brailleq1') {
-      setPath(`/braille-mastery/q1/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '10') {
+        setPath('/results/braille/q1')
+      } else {
+        setPath(`/braille-mastery/q1/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
     if (data.quizpath === 'brailleq2') {
-      setPath(`/braille-mastery/q2/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '10') {
+        setPath('/results/braille/q2')
+      } else {
+        setPath(`/braille-mastery/q2/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
     if (data.quizpath === 'brailleq3') {
-      setPath(`/braille-mastery/q3/${Number(data.currentQuestion.questionNum) + 1}`)
+      if (data.currentQuestion.questionNum === '10') {
+        setPath('/results/braille/q3')
+      } else {
+        setPath(`/braille-mastery/q3/${Number(data.currentQuestion.questionNum) + 1}`)
+      }
     }
   }, [])
  
@@ -84,7 +108,7 @@ export default function WrongAnswer(props) {
           Wrong!
         </div>
         <div className='next-question-button-wrapper'>
-          <Link to={{pathname: path, state: {correct: correct}}} className='next-question-button'>Next Question</Link>
+          <Link to={{pathname: path, state: {correct: correct, quizLength: data.quizLen, quizName: data.quiz}}} className='next-question-button'>Next Question</Link>
         </div>
     </div>
   )
