@@ -10,13 +10,11 @@ export default function BrailleLinks(props) {
   const [linkData, setLinkData] = useState('')
 
 useEffect(() => {
-  console.log('running get')
   axios.get('https://jel-language-flashcard-api.herokuapp.com/brailles')
     .then((response) => {
       setData(response.data)
       console.log(response.data.sort((a, b) => (a.id < b.id) ? -1 : 1))
 
-      console.log('state set')
       setLinkData(response.data.map((item, idx) => {
         return <div key={idx} className='link-div'>
           <NavLink to={`/braille/${item.id}`} className='letter-link' activeStyle={{backgroundColor: 'white',

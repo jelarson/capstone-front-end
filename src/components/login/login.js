@@ -29,12 +29,9 @@ export default function Login(props) {
       profiles.forEach(profile => {
         emailArr.push(profile.email)
       })
-      console.log(emailArr)
-      console.log(emailArr.includes(loginEmail))
       emailArr.includes(loginEmail) ? (
       profiles.forEach(profile => {
         if (loginEmail === profile.email) {
-          console.log('match!', profile)
           axios.post('https://jel-user-capstone-api.herokuapp.com/auth',
           {
             entered_password: loginPassword,
@@ -42,13 +39,10 @@ export default function Login(props) {
           },
           )
           .then(response => {
-            console.log(response.data)
             if (response.data === 'True'){
-              console.log('successful login')
               setLoggedInUser(profile)
               props.history.push('/')
             } else {
-              console.log('unsuccessful login')
               setVisibility('initial')
             }
           })

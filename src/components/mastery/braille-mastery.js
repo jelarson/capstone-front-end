@@ -23,7 +23,6 @@ export default function BrailleMastery(props) {
 
   const { loggedInUser } = useContext(UserContext)
 
-  console.log('logged in user', loggedInUser)
 
   const styles = {
     backgroundColor: 'green',

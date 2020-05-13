@@ -21,49 +21,42 @@ export default function BrailleQuizOne(props) {
     if (slug === '4') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/18`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '5') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/12`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '6') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/13`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '7') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/14`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '8') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/15`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '9') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/16`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '10') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/17`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
@@ -71,7 +64,6 @@ export default function BrailleQuizOne(props) {
 
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq1/${slug}`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })}
   }, [])

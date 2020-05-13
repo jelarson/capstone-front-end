@@ -17,12 +17,10 @@ export default function AslQuizOne(props) {
 
   const correct = props.location.state.correct
 
-  console.log('correct', correct)
 
   useEffect(() => {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq1/${slug}`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }, [])

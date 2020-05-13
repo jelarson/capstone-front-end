@@ -20,7 +20,6 @@ export default function BrailleQuizTwo(props) {
   useEffect(() => {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/brailleq2/${slug}`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }, [])

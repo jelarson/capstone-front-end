@@ -16,8 +16,6 @@ export default function Results(props){
 
   const { loggedInUser } = useContext(UserContext)
 
-  console.log(loggedInUser)
-
   const data = props.location.state
 
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function Results(props){
   }, [])
 
   useEffect(() => {
-    console.log('user', user)
     if (data.quizName === 'Braille Quiz One'){
       setPath('/braille-mastery')
       setScore(user.testOneHighScore)

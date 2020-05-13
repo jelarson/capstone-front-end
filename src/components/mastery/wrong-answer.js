@@ -9,11 +9,7 @@ export default function WrongAnswer(props) {
   
   const data = props.location.state
 
-  console.log('correct', data.CorrectAnswer)
-
   const correct = data.correct
-
-  console.log(Number(data.currentQuestion.questionNum) + 1)
 
   useEffect(() => {
     if (data.quizpath === 'aslq1') {

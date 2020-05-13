@@ -22,28 +22,24 @@ export default function AslQuizTwo(props) {
     if (slug === '16') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq2/22`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '17') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq2/23`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
     if (slug === '18') {
       axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq2/24`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }
   if (slug !== '16' && slug !== '17' && slug !== '18') {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq2/${slug}`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })}
   }, [])

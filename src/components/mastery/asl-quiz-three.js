@@ -15,12 +15,10 @@ export default function AslQuizThree(props) {
 
   const correct = props.location.state.correct
 
-  console.log('correct', correct)
 
   useEffect(() => {
     axios.get(`https://jel-quiz-capstone-api.herokuapp.com/aslq3/${slug}`)
     .then(response => {
-      console.log(response.data)
       setCurrentQuestion(response.data)
     })
   }, [])
@@ -31,7 +29,6 @@ export default function AslQuizThree(props) {
       response.data.forEach(item => {
         if (enteredAnswer === item.char || enteredAnswer === item.char.toLowerCase()){
           setSelectedAnswer(item.char)
-          console.log(item.char)
           setSelectedAnswerUrl(item.imageWithoutChar)
           console.log(item.imageWithoutChar)
         } else {
@@ -43,8 +40,6 @@ export default function AslQuizThree(props) {
   }, [enteredAnswer])
 
   useEffect(() => {
-    console.log('selected', selectedAnswer)
-    console.log('answer', currentQuestion.answerName)
     if (selectedAnswer === '') {
       setPath(`/wrong/asl/q3/${slug}`)
     }
@@ -83,7 +78,7 @@ export default function AslQuizThree(props) {
             maxLength={1}
             value={enteredAnswer}
             onChange={e => {
-              setEnteredAnswer(e.target.value); setCount(count + 1); console.log(count)
+              setEnteredAnswer(e.target.value); setCount(count + 1);
             }}
             />
           </form>

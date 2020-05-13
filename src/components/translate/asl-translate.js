@@ -18,11 +18,9 @@ export default function AslTranslate(props) {
   const [aslResult, setAslResult] = useState('')
 
   useEffect(() => {
-    console.log('running')
     axios.get('https://jel-language-flashcard-api.herokuapp.com/asls')
       .then((response) => {
         setData(response.data)
-        console.log(response.data)
       })
       .catch((error) => {
         console.log('getProducts error', error)
@@ -38,7 +36,6 @@ export default function AslTranslate(props) {
     return string.split('').map(letter => {
       return data.map(item => {
         if (letter.toUpperCase() === item.char) {
-          console.log(item.char)
           return <div className='letter-wrapper'>
 
             <div className='letter-image' style={{

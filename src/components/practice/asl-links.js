@@ -9,14 +9,12 @@ export default function AslLinks(props) {
   const [linkData, setLinkData] = useState([]);
 
   useEffect(() => {
-    console.log("running get");
     axios
       .get("https://jel-language-flashcard-api.herokuapp.com/asls")
       .then((response) => {
         setData(response.data);
         console.log(response.data.sort((a, b) => (a.id < b.id ? -1 : 1)));
 
-        console.log("state set");
         setLinkData(response.data);
       })
       .catch((error) => {
