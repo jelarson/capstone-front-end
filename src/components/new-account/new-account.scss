@@ -37,6 +37,11 @@
         width: 100%;
         font-size: 1.3em;
         margin-bottom: 12px;
+
+        @media (max-width: 900px) {
+          justify-content: center;
+          margin-bottom: 7px;
+        }
       }
 
       .form-button-container {
@@ -111,6 +116,23 @@
           font-size: 0.8em;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .new-account-container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .new-account-image-one {
+      display: none;
+    }
+    .new-acct-image {
+      width: 90%;
+    }
+    .new-account-container-content {
+      width: 90%;
     }
   }
 }

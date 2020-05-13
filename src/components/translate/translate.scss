@@ -5,12 +5,25 @@
   justify-content: center;
   align-items: center;
 
-  .title{
+  .title {
     font-size: 85px;
     margin-bottom: 75px;
+
+    @media (max-width: 1050px) {
+      font-size: 65px;
+    }
+    @media (max-width: 640px) {
+      font-size: 45px;
+    }
+    @media (max-width: 435px) {
+      font-size: 30px;
+    }
+    @media (max-width: 295px) {
+      font-size: 22px;
+    }
   }
 
-  .input-form{
+  .input-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,11 +35,26 @@
       border: 5px solid black;
       border-radius: 12px;
       width: 110%;
+      @media (max-width: 600px) {
+        font-size: 45px;
+      }
+      @media (max-width: 450px) {
+        font-size: 25px;
+      }
     }
 
     .char-count {
       font-size: 25px;
       margin-top: 15px;
+      @media (max-width: 600px) {
+        font-size: 20px;
+      }
+      @media (max-width: 450px) {
+        font-size: 12px;
+      }
+      @media (max-width: 280px) {
+        font-size: 9px;
+      }
     }
 
     .input-button {
@@ -38,6 +66,19 @@
       border-radius: 12px;
       background-color: grey;
       color: white;
+
+      @media (max-width: 1050px) {
+        font-size: 22px;
+      }
+      @media (max-width: 800px) {
+        font-size: 15px;
+      }
+      @media (max-width: 580px) {
+        font-size: 10px;
+      }
+      @media (max-width: 580px) {
+        width: 30%;
+      }
     }
   }
 
@@ -50,13 +91,12 @@
     justify-content: space-around;
     align-items: center;
 
-
     .letter-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
+
       .letter-image {
         height: 13vh;
         width: 10vw;

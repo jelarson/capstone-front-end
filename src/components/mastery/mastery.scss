@@ -22,6 +22,17 @@
     background-color: grey;
     color: white;
     height: 100px;
+    @media (max-width: 675px) {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      height: 50%;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+    @media (max-width: 400px) {
+      display: none;
+    }
 
     .name {
       font-size: 2em;
@@ -33,6 +44,11 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+
+      @media (max-width: 675px) {
+        width: 100%;
+        border-bottom: 4px black solid;
+      }
     }
 
     .scores {
@@ -43,6 +59,11 @@
       width: 55%;
       height: 100%;
       border-right: 4px solid black;
+
+      @media (max-width: 675px) {
+        width: 100%;
+        border-bottom: 4px black solid;
+      }
 
       .scores-title {
         font-size: 1.8em;
@@ -55,6 +76,12 @@
           margin-left: 10px;
           margin-right: 10px;
           font-size: 1.5em;
+          @media (max-width: 775px) {
+            font-size: 1.2em;
+          }
+          @media (max-width: 435px) {
+            font-size: 0.8em;
+          }
         }
       }
     }
@@ -67,9 +94,16 @@
       align-items: center;
       justify-content: center;
 
+      @media (max-width: 675px) {
+        width: 100%;
+      }
+
       .progress-title {
         font-size: 1.8em;
         margin-bottom: 5px;
+        @media (max-width: 675px) {
+          font-size: 1.4em;
+        }
       }
 
       .progress-bar-wrapper {
@@ -102,6 +136,9 @@
       }
       .overall-score {
         font-size: 1.2em;
+        @media (max-width: 800px) {
+          font-size: 1em;
+        }
       }
     }
   }
@@ -112,6 +149,16 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+
+    @media (max-width: 400px) {
+      // display: grid;
+      // grid-template-rows: 1fr 1fr 1fr;
+      // gap: 4px;
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+      justify-items: center;
+    }
 
     .test {
       display: flex;
@@ -126,8 +173,31 @@
       font-size: 1.4em;
       text-align: center;
 
+      @media (max-width: 400px) {
+        width: 90%;
+        justify-self: center;
+        margin-bottom: 4px;
+        // margin: auto;
+      }
+
       .test-title {
         font-size: 1.6em;
+
+        @media (max-width: 900px) {
+          font-size: 1.4em;
+        }
+        @media (max-width: 760px) {
+          font-size: 1.2em;
+        }
+        @media (max-width: 640px) {
+          font-size: 0.9em;
+        }
+        @media (max-width: 500px) {
+          font-size: 0.6em;
+        }
+        @media (max-width: 400px) {
+          font-size: 1.4em;
+        }
       }
 
       .link {
@@ -136,6 +206,18 @@
         background-color: white;
         color: black;
         font-size: 2em;
+        @media (max-width: 900px) {
+          font-size: 1.7em;
+        }
+        @media (max-width: 760px) {
+          font-size: 1.4em;
+        }
+        @media (max-width: 640px) {
+          font-size: 1em;
+        }
+        @media (max-width: 485px) {
+          font-size: 0.8em;
+        }
 
         &:hover {
           background-color: black;

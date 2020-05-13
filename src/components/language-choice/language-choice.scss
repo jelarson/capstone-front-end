@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://www.thoughtco.com/thmb/nSJ2KH002Rx_xgy_m98Yv7y3C3c=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/young-girl-eading-braille-135167391-5c48c419c9e77c0001a18fb8.jpg');
+    background-image: url("https://www.thoughtco.com/thmb/nSJ2KH002Rx_xgy_m98Yv7y3C3c=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/young-girl-eading-braille-135167391-5c48c419c9e77c0001a18fb8.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 40px;
@@ -22,18 +22,21 @@
     &:hover {
       // opacity: 1;
       color: black;
-      transition: .3s;
+      transition: 0.3s;
       filter: brightness(100%);
     }
+    @media (max-width: 450px) {
+      font-size: 15px;
+    }
   }
-  
+
   .asl-link {
     width: 50vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://www.agedcareguide.com.au/assets/news/articles_resized/large_24-SEPT-deaf.jpg');
+    background-image: url("https://www.agedcareguide.com.au/assets/news/articles_resized/large_24-SEPT-deaf.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 40px;
@@ -44,13 +47,25 @@
     background-color: black;
     filter: brightness(50%);
     // opacity: .6;
-    
-    
+
     &:hover {
       // opacity: 1;
-      transition: .3s;
+      transition: 0.3s;
       filter: brightness(100%);
       color: black;
     }
+
+    @media (max-width: 450px) {
+      font-size: 15px;
+    }
+  }
 }
+
+@media (max-width: 450px) {
+  .asl-link {
+    font-size: 25px;
+  }
+  .braille-link {
+    font-size: 25px;
+  }
 }

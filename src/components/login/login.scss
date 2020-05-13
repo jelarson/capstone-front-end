@@ -41,6 +41,13 @@
         justify-content: space-between;
         width: 100%;
         font-size: 1.3em;
+
+        @media (max-width: 900px) {
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          margin-bottom: 8px;
+        }
       }
     }
 
