@@ -40,23 +40,11 @@ export default function AslQuizThree(props) {
       })
     })
     .catch(err => console.log('error', err))
-    // console.log('selected', selectedAnswer)
-    // console.log('answer', currentQuestion.answerName)
-    // if (selectedAnswer === currentQuestion.answerName) {
-    //   setPath(`/correct/asl/q3/${slug}`)
-    // } 
-    // if (selectedAnswerUrl === '') {
-    //   setPath(`/wrong/asl/q3/${slug}`)
-    // }
-    // else {
-    //   setPath(`/wrong/asl/q3/${slug}`)
-    // }
   }, [enteredAnswer])
 
   useEffect(() => {
     console.log('selected', selectedAnswer)
     console.log('answer', currentQuestion.answerName)
-    // debugger
     if (selectedAnswer === '') {
       setPath(`/wrong/asl/q3/${slug}`)
     }

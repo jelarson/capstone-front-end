@@ -16,9 +16,7 @@ export default function BraillePractice(props) {
     console.log('running get')
     axios.get('https://jel-language-flashcard-api.herokuapp.com/brailles')
       .then((response) => {
-        // debugger
         setData(response.data)
-        // console.log(response.data)
         console.log(response.data.sort((a, b) => (a.id < b.id) ? -1 : 1))
 
         console.log('state set')
@@ -27,25 +25,11 @@ export default function BraillePractice(props) {
             <NavLink to={`/braille/${item.id}`} className='letter-link' activeStyle={{ color: 'red', fontSize: '1.3em' }}>{item.char}</NavLink>
           </div>
         }))
-        // setStartingData(response.data)
       })
       .catch((error) => {
         console.log('getProducts error', error)
       })
   }, [])
-
-  // useEffect(() => {
-  //   generatelinks()
-  // }, [data])
-
-  // function generatelinks() {
-  //   setData1(data.map(item => {
-  //     return <div>
-  //       <Link to={`/asl/${item.id}`}>{item.char}</Link>
-  //     </div>
-  //   }))
-  //   console.log('function run')
-  // }
 
   return (
     <div className='page-wrapper'>

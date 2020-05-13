@@ -44,7 +44,6 @@
     .link {
       text-decoration: none;
       color: white;
-      // margin-left: 10px;
       font-size: 20px;
       height: 10vh;
       width: 18vw;
@@ -76,22 +75,6 @@
         }
       }
     }
-
-    // .nav-link {
-    //   width: 15vw;
-    //   height: 10vh;
-    //   background-color: grey;
-    //   color: white;
-    //   text-align: left;
-    //   // padding-left: 10px;
-    //   font-size: 15px;
-    //   border: none;
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     background-color: black;
-    //   }
-    // }
   }
 }
 
@@ -114,7 +97,6 @@
   flex-direction: column;
   height: 100vh;
   width: 0vw;
-  // transform: translateX(30px);
   justify-content: space-around;
   background-color: grey;
   position: relative;
@@ -127,7 +109,6 @@
     display: none;
     text-decoration: none;
     color: white;
-    // width: 15vw;
   }
 }
 

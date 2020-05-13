@@ -32,7 +32,6 @@ export default function App() {
 
       <Router>
         <div className='app-wrapper'>
-          {/* <NavBar /> */}
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/new-account" component={NewAccount} />

@@ -45,7 +45,6 @@ export default function BrailleQuizThree(props) {
   useEffect(() => {
     console.log('selected', selectedAnswer)
     console.log('answer', currentQuestion.answerName)
-    // debugger
     if (selectedAnswer === '') {
       setPath(`/wrong/braille/q3/${slug}`)
     }

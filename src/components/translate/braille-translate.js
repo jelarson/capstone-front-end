@@ -23,7 +23,6 @@ export default function BrailleTranslate(props) {
       .then((response) => {
         setData(response.data)
         console.log(response.data)
-        // setStartingData(response.data)
       })
       .catch((error) => {
         console.log('getProducts error', error)
@@ -31,35 +30,9 @@ export default function BrailleTranslate(props) {
   }, [])
 
   function handleSubmit(e){
-    // e.preventDefault()
-    
     const varibale = translate(enteredInput.split(' ').join(''))
-
     setBrailleResult(varibale)
-    // debugger
   }
-
-  // useEffect(() => {
-  //   setCount(enteredInput.split(' ').join('').length)
-  //   if (count === 7) {
-  //     setMaxCount(count)
-  //   } else {
-  //     setMaxCount(20)
-  //   }
-  // }, [enteredInput])
-
-  // function translate(string) {
-  //   console.log(data)
-  //   return string.split('').map(letter => {
-  //     if (letter === data.char) {
-  //       console.log(data.char)
-  //       return <Character key={item.id} letter={letter} />
-  //     }
-  //   })
-  // return data.map((item) => {
-  //   return <Product key={item.id} item={item} slug={item.slug} />
-  // })
-  // }
 
   function translate(string) {
     return string.split('').map(letter => {
@@ -71,7 +44,6 @@ export default function BrailleTranslate(props) {
             <div className='letter-image' style={{
               backgroundImage: `url(${item.imageWithoutChar})`
             }} />
-            {/* <img key={item.id} src={item.imageWithoutChar} alt='Displayed Letter' /> */}
             <div className='letter-title'>
               < h3 > {item.char}</h3>
             </div>
@@ -106,7 +78,6 @@ export default function BrailleTranslate(props) {
         </form>
 
         <div className='output'>
-          {/* {translate(chosenInput)} */}
            {brailleResult}
         </div>
       </div>

@@ -76,8 +76,6 @@ export default function AslQuizTwo(props) {
         <div className='answer-wrapper'>
           <div className='answer-top-row answer-row'>
           <button className={`answer-button ${activeButton1}`} onClick={() => {setSelectedAnswer(currentQuestion.optionOneName); setSelectedAnswerUrl(currentQuestion.optionOneUrl); setActiveButton1('active-button1'); setActiveButton2('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionOneName}</button>
-          {/* <button className={`answer-button ${activeButton1}`} onClick={() => setSelectedAnswer(currentQuestion.optionOneName)}>{currentQuestion.optionOneName}</button> */}
-          {/* <button className={`answer-button ${activeButton1}`} onClick={() => setActiveButton1('active-button1')} onClick={() => setSelectedAnswer(currentQuestion.optionOneName)}>{currentQuestion.optionOneName}</button> */}
           <button className={`answer-button ${activeButton2}`} onClick={() => {setSelectedAnswer(currentQuestion.optionTwoName); setSelectedAnswerUrl(currentQuestion.optionTwoUrl); setActiveButton2('active-button2'); setActiveButton1('null'); setActiveButton3('null'); setActiveButton4('null')}}>{currentQuestion.optionTwoName}</button>
           </div>
           <div className='answer-bottom-row answer-row'>

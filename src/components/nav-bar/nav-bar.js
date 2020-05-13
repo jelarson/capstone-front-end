@@ -9,7 +9,6 @@ import {
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-// import SidebarLink from "./SidebarLink";
 
 const Icons = () => {
   return library.add(faArrowCircleRight, faArrowCircleLeft);
@@ -29,16 +28,12 @@ export default function Navbar() {
       return setName("nav-wrapper-closed");
     }
   }
-  // const handleClickThingy = (name) => {
-  //   setActiveLink(name);
-  // };
   return (
     <div className={name}>
       <div className='asl-navbar-links navbar-links'>
         <div className='navbar-sub-category-title'>
           <h3>American Sign Language</h3>
         </div>
-        {/* <div className='navbar-link-wrapper'> */}
         <NavLink
           exact
           to='/asl'
@@ -47,8 +42,6 @@ export default function Navbar() {
         >
           <div className='nav-div'>Practice</div>
         </NavLink>
-        {/* </div> */}
-        {/* <div className='navbar-link-wrapper'> */}
         <NavLink
           exact
           to='/asl-translate'
@@ -57,9 +50,6 @@ export default function Navbar() {
         >
           <div className='nav-div'>Translate</div>
         </NavLink>
-        {/* </div> */}
-        {/* <div className='navbar-link-wrapper'> */}
-        {/* <NavLink exact to='/asl-mastery' className='link'><button className='nav-link'>Test Yourself</button></NavLink> */}
         <NavLink
           exact
           to='/asl-mastery'
@@ -68,14 +58,12 @@ export default function Navbar() {
         >
           <div className='nav-div'>Test Yourself</div>
         </NavLink>
-        {/* </div> */}
       </div>
 
       <div className='braile-navbar-links navbar-links'>
         <div className='navbar-sub-category-title'>
           <h3>Braille</h3>
         </div>
-        {/* <div className={`navbar-link-wrapper`}> */}
         <NavLink
           exact
           to='/braille'
@@ -84,8 +72,6 @@ export default function Navbar() {
         >
           <div className='nav-div'>Practice</div>
         </NavLink>
-        {/* </div> */}
-        {/* <div className='navbar-link-wrapper'> */}
         <NavLink
           exact
           to='/braille-translate'
@@ -94,7 +80,6 @@ export default function Navbar() {
         >
           <div className='nav-div'>Translate</div>
         </NavLink>
-        {/* </div> */}
         <NavLink
           exact
           to='/braille-mastery'
@@ -103,7 +88,6 @@ export default function Navbar() {
         >
           <div className='nav-div'>Test Yourself</div>
         </NavLink>
-        {/* <SidebarLink update={handleClickThingy} destination="/braille-mastery" text="Test Yourself" activeLink={activeLink} id={'1'} /> */}
       </div>
 
       <div className='drawer-button'>

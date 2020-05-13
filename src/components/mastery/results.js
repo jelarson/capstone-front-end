@@ -29,7 +29,6 @@ export default function Results(props){
 
   useEffect(() => {
     console.log('user', user)
-    // if (data.quizName === 'Braille Quiz One' || data.quizName === 'Braille Quiz Two' || data.quizName === 'Braille Quiz Three') {
     if (data.quizName === 'Braille Quiz One'){
       setPath('/braille-mastery')
       setScore(user.testOneHighScore)
@@ -192,7 +191,6 @@ export default function Results(props){
             {highScore} / {data.quizLength}
           </div>
         </div>
-      {/* Your score was {data.correct} out of {data.quizLength} */}
       </div>
       <div className='return-button-wrapper'>
         <Link to={path} className='return-button'>Return to Mastery</Link>      

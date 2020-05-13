@@ -13,9 +13,6 @@ export default function WrongAnswer(props) {
 
   const correct = data.correct
 
-
-  // console.log(data.currentQuestion.questionNum)
-  // console.log(data.currentQuestion.questionNum + 1)
   console.log(Number(data.currentQuestion.questionNum) + 1)
 
   useEffect(() => {

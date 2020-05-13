@@ -13,9 +13,7 @@ export default function AslLinks(props) {
     axios
       .get("https://jel-language-flashcard-api.herokuapp.com/asls")
       .then((response) => {
-        // debugger
         setData(response.data);
-        // console.log(response.data)
         console.log(response.data.sort((a, b) => (a.id < b.id ? -1 : 1)));
 
         console.log("state set");

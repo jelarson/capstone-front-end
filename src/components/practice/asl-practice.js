@@ -16,9 +16,7 @@ export default function AslPractice(props) {
     console.log('running get')
     axios.get('https://jel-language-flashcard-api.herokuapp.com/asls')
       .then((response) => {
-        // debugger
         setData(response.data)
-        // console.log(response.data)
         console.log(response.data.sort((a, b) => (a.id < b.id) ? -1 : 1))
 
         console.log('state set')
@@ -27,25 +25,11 @@ export default function AslPractice(props) {
             <Link to={`/asl/${item.id}`}>{item.char}</Link>
           </div>
         }))
-        // setStartingData(response.data)
       })
       .catch((error) => {
         console.log('get links error', error)
       })
   }, [])
-
-  // useEffect(() => {
-  //   generatelinks()
-  // }, [data])
-
-  // function generatelinks() {
-  //   setData1(data.map(item => {
-  //     return <div>
-  //       <Link to={`/asl/${item.id}`}>{item.char}</Link>
-  //     </div>
-  //   }))
-  //   console.log('function run')
-  // }
 
   return (
     <div className='page-wrapper'>

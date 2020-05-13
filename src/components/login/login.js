@@ -25,9 +25,6 @@ export default function Login(props) {
 
   function handleLoginSubmit(event) {
     event.preventDefault();
-    // axios.get('https://jel-user-capstone-api.herokuapp.com/users')
-    // .then(response => {
-      // let profileArray = response.data
       let emailArr = []
       profiles.forEach(profile => {
         emailArr.push(profile.email)
@@ -35,7 +32,6 @@ export default function Login(props) {
       console.log(emailArr)
       console.log(emailArr.includes(loginEmail))
       emailArr.includes(loginEmail) ? (
-      // debugger
       profiles.forEach(profile => {
         if (loginEmail === profile.email) {
           console.log('match!', profile)
@@ -56,46 +52,14 @@ export default function Login(props) {
               setVisibility('initial')
             }
           })
-        // } else {
-        //   setVisibility('initial')
         }
       })) : (
         setVisibility('initial')
       )
-    // })
   }
-
-  // function handleLoginSubmit(event) {
-  //   event.preventDefault();
-  //   axios.get('https://ejt-meme-maker-api.herokuapp.com/users')
-  //     .then(response => {
-  //       let profileArray = response.data
-  //       profileArray.forEach(p => {
-  //         if (loginEmail === p.email) {
-  //           if (loginPassword === p.password) {
-  //             setLoggedInUser(p)
-  //             props.history.push('/')
-  //           } else {
-  //             console.log('failed')
-  //             setVisibility('initial')
-  //           }
-  //         } else {
-  //           console.log('not a match')
-  //           setVisibility('initial')
-  //         }
-  //       })
-
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   setVisibility('hidden')
-  // }, [loginPassword, loginEmail])
-
 
   return (
     <div className='login-container'>
-      {/* <img src={Logo} alt='Logo' /> */}
       <div className='login-image login-image-one' style={{ backgroundImage: 'url(https://thumbs.dreamstime.com/t/escola-de-protuber%C3%A2ncia-tocantes-do-livro-cego-doente-braile-da-leitura-crian%C3%A7a-113604556.jpg)' }} />
       <div className='login-image' style={{ backgroundImage: 'url(https://img.freepik.com/free-photo/two-women-speak-sign-language-girls-talk-language-hearing-impaired-people-deaf_8119-2247.jpg?size=626&ext=jpg)' }} />
       <div className='login-image login-image-one' style={{ backgroundImage: 'url(https://www.stronggo.com/sites/default/files/styles/image_col_12/public/2018-12/ada-blind-people-etiquette.jpg?itok=NHGJzVdu)' }} />
