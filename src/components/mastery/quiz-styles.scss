@@ -148,6 +148,10 @@
   .input-title {
     font-size: 3em;
     margin-right: 10px;
+
+    @media (max-width: 350px) {
+      font-size: 1.8em;
+    }
   }
 
   .quiz-input {
@@ -158,6 +162,10 @@
     color: white;
     outline: none;
     border-radius: 10px;
+
+    @media (max-width: 350px) {
+      font-size: 3em;
+    }
   }
 }
 
