@@ -8,8 +8,22 @@
     border: 4px black solid;
     margin-right: 15px;
 
+    @media (max-width: 375px) {
+      height: 35vh;
+    }
+    @media (max-width: 260px) {
+      height: 25vh;
+    }
+
     img {
       height: 46vh;
+
+      @media (max-width: 375px) {
+        height: 31vh;
+      }
+      @media (max-width: 375px) {
+        height: 21vh;
+      }
     }
   }
 
@@ -19,6 +33,10 @@
     justify-content: center;
     font-size: 8em;
     margin-left: 15px;
+
+    @media (max-width: 300px) {
+      font-size: 5em;
+    }
   }
 }
 .correct-message {
@@ -43,6 +61,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 535px) {
+      font-size: 18px;
+      width: 35%;
+    }
+    @media (max-width: 375px) {
+      font-size: 15px;
+      width: 40%;
+    }
+    @media (max-width: 275px) {
+      font-size: 13px;
+      width: 45%;
+    }
 
     &:hover {
       background-color: black;

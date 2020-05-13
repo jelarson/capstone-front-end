@@ -104,6 +104,9 @@ export default function AslQuizThree(props) {
           <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, correct: correct, quiz: 'ASL Quiz Three', quizpath: 'aslq3', quizLen: '36'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
+      <div className='return-link-wrapper'>
+        <Link to='/asl-mastery' className='return-link'>Return to Mastery</Link>
+      </div>
     </div>
   )
   }

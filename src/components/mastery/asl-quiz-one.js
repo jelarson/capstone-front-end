@@ -68,6 +68,9 @@ export default function AslQuizOne(props) {
           <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, correct: correct, quiz: 'ASL Quiz One', quizpath: 'aslq1', quizLen: '10'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
+      <div className='return-link-wrapper'>
+        <Link to='/asl-mastery' className='return-link'>Return to Mastery</Link>
+      </div>
     </div>
   )
   }

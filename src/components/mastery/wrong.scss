@@ -1,6 +1,9 @@
 .incorrect-content-wrapper {
   display: flex;
   flex-direction: row;
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
 
   .answer-wrapper {
     display: flex;
@@ -11,6 +14,7 @@
 
     .subtitle {
       font-size: 3em;
+      text-align: center;
     }
 
     .answer-image {
@@ -20,13 +24,52 @@
       align-items: center;
       flex-direction: row;
 
+      @media (max-width: 800px) {
+        height: 35vh;
+      }
+      @media (max-width: 685px) {
+        height: 28vh;
+      }
+      @media (max-width: 600px) {
+        height: 20vh;
+      }
+      @media (max-width: 400px) {
+        height: 16vh;
+      }
+      @media (max-width: 295px) {
+        height: 12vh;
+      }
+
       img {
         height: 42vh;
+
+        @media (max-width: 800px) {
+          height: 32vh;
+        }
+        @media (max-width: 685px) {
+          height: 25vh;
+        }
+        @media (max-width: 600px) {
+          height: 18vh;
+        }
+        @media (max-width: 400px) {
+          height: 14vh;
+        }
+        @media (max-width: 295px) {
+          height: 10vh;
+        }
       }
       .correct-letter {
         margin-left: 15px;
         margin-right: 15px;
         font-size: 8em;
+
+        @media (max-width: 400px) {
+          font-size: 5em;
+        }
+        @media (max-width: 295px) {
+          font-size: 2em;
+        }
       }
     }
   }

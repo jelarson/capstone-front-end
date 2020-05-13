@@ -66,6 +66,9 @@ export default function BrailleQuizOne(props) {
           <Link to={{pathname: path, state: {selectedAnswer: selectedAnswer, selectedAnswerUrl: selectedAnswerUrl, currentQuestion: currentQuestion, correct: correct, quiz: 'Braille Quiz One', quizpath: 'brailleq1', quizLen: '10'}}} className='answer-submit-button'>Submit Answer</Link>
         </div>
       </div>
+      <div className='return-link-wrapper'>
+        <Link to='/braille-mastery' className='return-link'>Return to Mastery</Link>
+      </div>
     </div>
   )
   }
