@@ -242,3 +242,49 @@
     background-color: black;
   }
 }
+
+.login-link {
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+
+  .link-instructions {
+    font-size: 4em;
+
+    @media (max-width: 350px) {
+      font-size: 2em;
+    }
+  }
+
+  .login-link-button {
+    text-decoration: none;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+    font-size: 2em;
+    margin-top: 35px;
+    width: 15vw;
+
+    &:hover {
+      background-color: black;
+    }
+
+    @media (max-width: 350px) {
+      font-size: 1.5em;
+      width: 22vw;
+    }
+  }
+}
+
+.login-link-none {
+  display: none;
+}
+
+.mastery-page-content-wrapper-none {
+  display: none;
+}

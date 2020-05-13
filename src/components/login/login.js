@@ -15,12 +15,27 @@ export default function Login(props) {
 
   const { setLoggedInUser } = useContext(UserContext)
 
+    useEffect(() => {
+      axios.get('https://jel-user-capstone-api.herokuapp.com/users')
+      .then(response => {
+        setProfiles(response.data)
+      })
+    }, [])
+
 
   function handleLoginSubmit(event) {
     event.preventDefault();
     // axios.get('https://jel-user-capstone-api.herokuapp.com/users')
     // .then(response => {
       // let profileArray = response.data
+      let emailArr = []
+      profiles.forEach(profile => {
+        emailArr.push(profile.email)
+      })
+      console.log(emailArr)
+      console.log(emailArr.includes(loginEmail))
+      emailArr.includes(loginEmail) ? (
+      // debugger
       profiles.forEach(profile => {
         if (loginEmail === profile.email) {
           console.log('match!', profile)
@@ -44,7 +59,9 @@ export default function Login(props) {
         // } else {
         //   setVisibility('initial')
         }
-      })
+      })) : (
+        setVisibility('initial')
+      )
     // })
   }
 
@@ -75,12 +92,6 @@ export default function Login(props) {
   //   setVisibility('hidden')
   // }, [loginPassword, loginEmail])
 
-  useEffect(() => {
-    axios.get('https://jel-user-capstone-api.herokuapp.com/users')
-    .then(response => {
-      setProfiles(response.data)
-    })
-  }, [])
 
   return (
     <div className='login-container'>

@@ -18,6 +18,8 @@ export default function BrailleMastery(props) {
   const [quizOneCount, setQuizOneCount] = useState(0)
   const [quizTwoCount, setQuizTwoCount] = useState(0)
   const [quizThreeCount, setQuizThreeCount] = useState(0)
+  const [contentClass, setContentClass] = useState('mastery-page-content-wrapper')
+  const [linkClass, setLinkClass] = useState('login-link-none')
 
   const { loggedInUser } = useContext(UserContext)
 
@@ -29,12 +31,8 @@ export default function BrailleMastery(props) {
     width: width + '%'
   }
 
-  console.log('progress', user.testOneHighScore)
-  console.log(String(Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)))
-
   useEffect(() => {
     if(width < Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 64 * 100)) {
-      console.log('useeffect')
       let interval = setInterval(() => setWidth(width + .5), 5)
       return () => clearInterval(interval)
     }
@@ -43,42 +41,36 @@ export default function BrailleMastery(props) {
   useEffect(() => {
     axios.get(`https://jel-user-capstone-api.herokuapp.com/user/${loggedInUser.id}`)
     .then(response => {
-      console.log('user', response.data)
       setUser(response.data)
     })
-    // setUser(loggedInUser)
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/brailleq1s')
     .then(response => {
-      console.log('quiz one', response.data)
-      console.log('quiz one', response.data[0].questionNum)
       setQuizOneSlug(response.data[quizOneCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/brailleq2s')
     .then(response => {
-      console.log('quiz two', response.data)
-      console.log('quiz two', response.data[0].questionNum)
       setQuizTwoSlug(response.data[quizTwoCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/brailleq3s')
     .then(response => {
-      console.log('quiz three', response.data)
-      console.log('quiz three', response.data[0].questionNum)
       setQuizThreeSlug(response.data[quizThreeCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
   }, [])
 
-  // console.log(progress)
-
-  // const testVar = true
+  useEffect(() => {
+    if (loggedInUser. name === 'hello from context') {
+      setContentClass('mastery-page-content-wrapper-none')
+      setLinkClass('login-link')
+    }
+  }, [])
 
   return (
     <div className='page-wrapper'>
       <Navbar />
-    {/* {testVar ? 'hi' : 'goodbye'} */}
-      <div className='mastery-page-content-wrapper'>
+      <div className={contentClass}>
         <div className='page-title'>
           Welcome {user.name}! Ready to master Braille?
         </div>
@@ -91,15 +83,14 @@ export default function BrailleMastery(props) {
               Scores
             </div>
             <div className='scores-wrapper'>
-
             <div className='test-one-score score'>
-              Begginer Test High Score: {user.testOneHighScore} 
+              Begginer Test High Score: {user.testOneHighScore} / 10
             </div>
             <div className='test-two-score score'>
-              Intermediate Test High Score: {user.testTwoHighScore} 
+              Intermediate Test High Score: {user.testTwoHighScore} / 18
             </div>
             <div className='test-three-score score'>
-              Expert Test High Score: {user.testThreeHighScore} 
+              Expert Test High Score: {user.testThreeHighScore} / 36
             </div>
             </div>
           </div>
@@ -112,11 +103,7 @@ export default function BrailleMastery(props) {
                 <div style={styles} className='loading-bar'>
                   <span className='progress-percent'>{width.toFixed(0)}%</span>
                 </div>
-                {/* progress bar place holder */}
               </div>
-              {/* <div className='percent-score'>
-                {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 64 * 100)}%
-              </div> */}
             </div>
             <div className='overall-score'>
               {Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)}/64 Questions Completed
@@ -143,11 +130,16 @@ export default function BrailleMastery(props) {
             <Link to={{pathname:`/braille-mastery/q3/${quizThreeSlug}`, state: {correct: 0}}} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
           </div>
         </div>
-    </div>
         <div>
       <Link to='/login' className='logout-link'>Logout</Link>
     </div>
-    {/* <button onClick={console.log('logged in user is: ', loggedInUser.name)}>button</button> */}
+    </div>
+    <div className={linkClass}>
+      <div className='link-instructions'>
+        Please Login to Access Mastery Tests
+      </div>
+      <Link to='/login' className='login-link-button'>Login</Link>
+    </div>
     </div>
   )
 }

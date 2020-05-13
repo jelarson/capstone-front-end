@@ -19,8 +19,8 @@ useEffect(() => {
       console.log(response.data.sort((a, b) => (a.id < b.id) ? -1 : 1))
 
       console.log('state set')
-      setLinkData(response.data.map(item => {
-        return <div className='link-div'>
+      setLinkData(response.data.map((item, idx) => {
+        return <div key={idx} className='link-div'>
           <NavLink to={`/braille/${item.id}`} className='letter-link' activeStyle={{backgroundColor: 'white',
         color: 'black'}}>{item.char} </NavLink>
         </div>

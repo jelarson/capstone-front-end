@@ -3,9 +3,7 @@ import axios from 'axios'
 import { Link } from "react-router-dom";
 
 import Navbar from '../nav-bar/nav-bar'
-// import AslQuizOne from '../mastery/asl-quiz-one'
-// import AslQuizTwo from '../mastery/asl-quiz-two'
-// import AslQuizThree from '../mastery/asl-quiz-three'
+
 import './mastery.scss'
 import {UserContext} from '../context/context'
 
@@ -20,6 +18,8 @@ export default function AslMastery(props) {
   const [quizOneCount, setQuizOneCount] = useState(0)
   const [quizTwoCount, setQuizTwoCount] = useState(0)
   const [quizThreeCount, setQuizThreeCount] = useState(0)
+  const [contentClass, setContentClass] = useState('mastery-page-content-wrapper')
+  const [linkClass, setLinkClass] = useState('login-link-none')
 
   const { loggedInUser } = useContext(UserContext)
 
@@ -31,12 +31,9 @@ export default function AslMastery(props) {
     width: width + '%'
   }
 
-  console.log('progress', user.testOnePassed)
-  console.log(String(Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)))
 
   useEffect(() => {
     if(width < Math.round((Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)) / 64 * 100)) {
-      console.log('useeffect')
       let interval = setInterval(() => setWidth(width + .5), 5)
       return () => clearInterval(interval)
     }
@@ -45,42 +42,37 @@ export default function AslMastery(props) {
   useEffect(() => {
     axios.get(`https://jel-user-capstone-api.herokuapp.com/user/${loggedInUser.id}`)
     .then(response => {
-      console.log('user', response.data)
       setUser(response.data)
     })
-    // setUser(loggedInUser)
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq1s')
     .then(response => {
-      console.log('quiz one', response.data)
-      console.log('quiz one', response.data[0].questionNum)
       setQuizOneSlug(response.data[quizOneCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq2s')
     .then(response => {
-      console.log('quiz two', response.data)
-      console.log('quiz two', response.data[0].questionNum)
       setQuizTwoSlug(response.data[quizTwoCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
     axios.get('https://jel-quiz-capstone-api.herokuapp.com/aslq3s')
     .then(response => {
-      console.log('quiz three', response.data)
-      console.log('quiz three', response.data[0].questionNum)
       setQuizThreeSlug(response.data[quizThreeCount].questionNum)
     })
     .catch(err => console.log(err, 'err'))
+
   }, [])
 
-  // console.log(progress)
-
-  // const testVar = true
+  useEffect(() => {
+    if (loggedInUser. name === 'hello from context') {
+      setContentClass('mastery-page-content-wrapper-none')
+      setLinkClass('login-link')
+    }
+  }, [])
 
   return (
     <div className='page-wrapper'>
       <Navbar />
-    {/* {testVar ? 'hi' : 'goodbye'} */}
-      <div className='mastery-page-content-wrapper'>
+      <div className={contentClass}>
         <div className='page-title'>
           Welcome {user.name}! Ready to master ASL?
         </div>
@@ -95,13 +87,13 @@ export default function AslMastery(props) {
             <div className='scores-wrapper'>
 
             <div className='test-one-score score'>
-              Begginer Test High Score: {user.testOnePassed} 
+              Begginer Test High Score: {user.testOnePassed} / 10
             </div>
             <div className='test-two-score score'>
-              Intermediate Test High Score: {user.testTwoPassed} 
+              Intermediate Test High Score: {user.testTwoPassed} / 18
             </div>
             <div className='test-three-score score'>
-              Expert Test High Score: {user.testThreePassed} 
+              Expert Test High Score: {user.testThreePassed} / 36
             </div>
             </div>
           </div>
@@ -114,11 +106,7 @@ export default function AslMastery(props) {
                 <div style={styles} className='loading-bar'>
                   <span className='progress-percent'>{width.toFixed(0)}%</span>
                 </div>
-                {/* progress bar place holder */}
               </div>
-              {/* <div className='percent-score'>
-                {Math.round((Number(user.testOneHighScore) + Number(user.testTwoHighScore) + Number(user.testThreeHighScore)) / 64 * 100)}%
-              </div> */}
             </div>
             <div className='overall-score'>
               {Number(user.testOnePassed) + Number(user.testTwoPassed) + Number(user.testThreePassed)}/64 Questions Completed
@@ -145,11 +133,16 @@ export default function AslMastery(props) {
             <Link to={{pathname:`/asl-mastery/q3/${quizThreeSlug}`, state: {correct: 0}}} count={quizThreeCount} className='test-three-link link'>Begin Test</Link>
           </div>
         </div>
-    </div>
         <div>
       <Link to='/login' className='logout-link'>Logout</Link>
     </div>
-    {/* <button onClick={console.log('logged in user is: ', loggedInUser.name)}>button</button> */}
+    </div>
+    <div className={linkClass}>
+      <div className='link-instructions'>
+        Please Login to Access Mastery Tests
+      </div>
+      <Link to='/login' className='login-link-button'>Login</Link>
+    </div>
     </div>
   )
 }
